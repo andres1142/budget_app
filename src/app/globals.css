@@ -10,6 +10,18 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .form-button {
   @apply h-8 rounded-lg bg-secondary_pink font-motivaRegular text-lg text-secondary_white hover:shadow-lg 
   hover:shadow-secondary_pink/25 hover:cursor-pointer;

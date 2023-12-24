@@ -1,5 +1,5 @@
 import { Client, Account, ID } from "appwrite"
-import { LoginUserAccount, CreateUserAccount } from "./types"
+import { AuthInputs, RegisterInputs } from "./types"
 
 const client = new Client()
 
@@ -9,14 +9,14 @@ client
 
 const account = new Account(client)
 
-class AppwriteService {
+class AppwriteAuthService {
   /**
    * Create user account and login to appwrite
    *
    * @param userInfo  - user info to create account
    * @returns
    */
-  async createUserAccount(userInfo: CreateUserAccount) {
+  async createUserAccount(userInfo: RegisterInputs) {
     try {
       const userAccount = await account.create(
         ID.unique(),
@@ -40,7 +40,7 @@ class AppwriteService {
    * @param userInfo - user info to login
    * @returns  - session info
    */
-  async login(userInfo: LoginUserAccount) {
+  async login(userInfo: AuthInputs) {
     try {
       return await account.createEmailSession(userInfo.email, userInfo.password)
     } catch (error) {
@@ -78,6 +78,6 @@ class AppwriteService {
   }
 }
 
-const appwriteService = new AppwriteService()
+const appwriteAuthService = new AppwriteAuthService()
 
-export default appwriteService
+export default appwriteAuthService
